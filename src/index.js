@@ -72,7 +72,7 @@ const buildPixelMap = evenSquares => {
   })
 }
 
-const saveImage = async (pixelMap, color, name) => {
+const createImage = async (pixelMap, color, name) => {
   const image = gm(IMAGE_SIZE, IMAGE_SIZE, '#F0F0F0');
   pixelMap.forEach(pixelSquare => {
     const { topLeft, bottomRight } = pixelSquare
@@ -116,7 +116,7 @@ const buildImage = async name => {
   const evenSquares = filterOddSquares(grid);
   // [{topLeft: [50, 50], bottomRight: [100, 100]}, ...]
   const pixelMapArray = buildPixelMap(evenSquares);
-  await saveImage(pixelMapArray, color, name)
+  await createImage(pixelMapArray, color, name)
 }
 
 const readFromConsole = () => {
